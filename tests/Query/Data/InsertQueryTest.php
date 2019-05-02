@@ -1,0 +1,39 @@
+<?php
+/**
+ * Copyright (C) Jyxon, Inc. All rights reserved.
+ * See LICENSE for license details.
+ */
+
+namespace Ulrack\Dbal\Sql\Tests\Query\Data;
+
+use PHPUnit\Framework\TestCase;
+use Ulrack\Dbal\Sql\Query\Data\InsertQuery;
+use InvalidArgumentException;
+
+/**
+ * @coversDefaultClass \Ulrack\Dbal\Sql\Query\Data\InsertQuery
+ */
+class InsertQueryTest extends TestCase
+{
+    /**
+     * @covers ::__construct
+     * @covers ::getQuery
+     * @covers ::getParameters
+     * @covers ::addColumn
+     *
+     * @return void
+     */
+    public function testQuery(): void
+    {
+        $subject = new InsertQuery('foo');
+        $this->assertInstanceOf(InsertQuery::class, $subject);
+
+        $subject->addColumn('bar', 'baz');
+
+        $this->assertEquals('INSERT INTO foo (bar) VALUES (?);', $subject->getQuery());
+        $this->assertEquals(['baz'], $subject->getParameters());
+
+        $this->expectException(InvalidArgumentException::class);
+        $subject->addColumn('bar', ['test']);
+    }
+}
