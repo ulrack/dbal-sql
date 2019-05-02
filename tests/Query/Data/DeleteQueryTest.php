@@ -35,7 +35,7 @@ class DeleteQueryTest extends TestCase
         $subject = new DeleteQuery('foo');
         $filterGroup = new QueryFilterGroup;
         $filterGroup->addFilter(
-            new ComparatorFilter('bar', 'baz', ComparatorEnum::COMPARATOR_EQ())
+            new ComparatorFilter('bar', 'baz', ComparatorEnum::EQ())
         );
 
         $subject->addFilterGroup($filterGroup);

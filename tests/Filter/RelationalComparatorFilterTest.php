@@ -26,7 +26,7 @@ class RelationalComparatorFilterTest extends TestCase
         $subject = new RelationalComparatorFilter(
             'foo',
             ['bar', 'baz', 'qux'],
-            ComparatorEnum::COMPARATOR_IN()
+            ComparatorEnum::IN()
         );
 
         $this->assertInstanceOf(RelationalComparatorFilter::class, $subject);

@@ -41,7 +41,7 @@ $filterGroup = new QueryFilterGroup;
 $filter = new ComparatorFilter(
     'column',
     'value',
-    ComparatorEnum::COMPARATOR_EQ()
+    ComparatorEnum::EQ()
 );
 
 //Add the filter
@@ -137,6 +137,11 @@ for the other table queries.
 - [CreateOrReplaceViewQuery](src/Query/View/CreateOrReplaceViewQuery.php)
 - [CreateViewQuery](src/Query/View/CreateViewQuery.php)
 - [DropViewQuery](src/Query/View/DropViewQuery.php)
+
+##### Index
+
+- [CreateIndexQuery](src/Query/Index/CreateIndexQuery)
+- [DropIndexQuery](src/Query/Index/DropIndexQuery)
 
 ## Change log
 

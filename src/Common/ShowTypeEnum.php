@@ -9,8 +9,8 @@ namespace Ulrack\Dbal\Sql\Common;
 use Ulrack\Enum\Enum;
 
 /**
- * @method static ShowTypeEnum SHOW_DATABASES()
- * @method static ShowTypeEnum SHOW_TABLES()
+ * @method static ShowTypeEnum DATABASES()
+ * @method static ShowTypeEnum TABLES()
  */
 class ShowTypeEnum extends Enum
 {
@@ -19,12 +19,12 @@ class ShowTypeEnum extends Enum
      *
      * @var string
      */
-    const SHOW_DATABASES = 'DATABASES';
+    const DATABASES = 'DATABASES';
 
     /**
      * Contains the show tables keyword.
      *
      * @var string
      */
-    const SHOW_TABLES = 'TABLES';
+    const TABLES = 'TABLES';
 }

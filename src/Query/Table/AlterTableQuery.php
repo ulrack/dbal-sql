@@ -7,6 +7,7 @@
 namespace Ulrack\Dbal\Sql\Query\Table;
 
 use Ulrack\Dbal\Common\QueryInterface;
+use Ulrack\Dbal\Sql\Common\IndexTypeEnum;
 
 class AlterTableQuery extends AbstractTableQuery
 {
@@ -18,22 +19,14 @@ class AlterTableQuery extends AbstractTableQuery
     private $table;
 
     /**
-     * The engine that is being used for the table.
-     *
-     * @var null|string
-     */
-    private $engine;
-
-    /**
      * Constructor
      *
      * @param string      $table
      * @param string|null $engine
      */
-    public function __construct(string $table, string $engine = null)
+    public function __construct(string $table)
     {
         $this->table  = $table;
-        $this->engine = $engine;
     }
 
     /**
@@ -43,17 +36,27 @@ class AlterTableQuery extends AbstractTableQuery
      */
     public function getQuery(): string
     {
+        $columns = $this->getColumns();
+        $keys = $this->getKeys();
+
+        foreach ($columns['add'] as $key => $addColumn) {
+            $columns['add'][$key] = 'ADD ' . $addColumn;
+        }
+
+        foreach ($keys['add'] as $key => $addKey) {
+            $keys['add'][$key] = 'ADD ' . $addKey;
+        }
+
         return sprintf(
-            'ALTER TABLE %s (%s)%s;',
+            'ALTER TABLE %s %s;',
             $this->table,
             implode(
                 ', ',
                 array_merge(
-                    ...array_values($this->getColumns()),
-                    ...array_values($this->getIndices())
+                    ...array_values($columns),
+                    ...array_values($keys)
                 )
-            ),
-            $this->engine ? sprintf(' ENGINE = %s', $this->engine) : ''
+            )
         );
     }
 }

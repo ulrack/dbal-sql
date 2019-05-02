@@ -22,9 +22,11 @@ class AlterTableQueryTest extends TestCase
     /**
      * @covers ::__construct
      * @covers ::getQuery
-     * @covers \Ulrack\Dbal\Sql\Query\Table\AbstractTableQuery::addIndex
-     * @covers \Ulrack\Dbal\Sql\Query\Table\AbstractTableQuery::dropIndex
-     * @covers \Ulrack\Dbal\Sql\Query\Table\AbstractTableQuery::getIndices
+     * @covers \Ulrack\Dbal\Sql\Query\Table\AbstractTableQuery::addPrimaryKey
+     * @covers \Ulrack\Dbal\Sql\Query\Table\AbstractTableQuery::dropPrimaryKey
+     * @covers \Ulrack\Dbal\Sql\Query\Table\AbstractTableQuery::addForeignKey
+     * @covers \Ulrack\Dbal\Sql\Query\Table\AbstractTableQuery::dropForeignKey
+     * @covers \Ulrack\Dbal\Sql\Query\Table\AbstractTableQuery::getKeys
      * @covers \Ulrack\Dbal\Sql\Query\Table\AbstractTableQuery::addColumn
      * @covers \Ulrack\Dbal\Sql\Query\Table\AbstractTableQuery::alterColumn
      * @covers \Ulrack\Dbal\Sql\Query\Table\AbstractTableQuery::dropColumn
@@ -34,29 +36,34 @@ class AlterTableQueryTest extends TestCase
      */
     public function testQuery(): void
     {
-        $subject = new AlterTableQuery('foo', 'INNODB');
+        $subject = new AlterTableQuery('foo');
         $this->assertInstanceOf(AlterTableQuery::class, $subject);
 
-        $subject->addIndex(IndexTypeEnum::INDEX_PRIMARY(), 'bar');
-        $subject->dropIndex('baz');
+        $subject->addPrimaryKey('bar');
+        $subject->dropPrimaryKey();
+        $subject->addForeignKey('FK_foo', 'foo', 'qux', 'foo');
+        $subject->dropForeignKey('FK_bar');
         $subject->addColumn(
             'qux',
-            ColumnTypeEnum::TYPE_VARCHAR(),
+            ColumnTypeEnum::VARCHAR(),
             '255',
             ColumnDefaultEnum::DEFAULT_NULL(),
-            ColumnAttributeEnum::ATTRIBUTE_UNSIGNED(),
+            null,
             true,
+            false,
             false,
             'Lorem Ipsum dolor sit amet'
         );
 
-        $subject->alterColumn('doe', ColumnTypeEnum::TYPE_TINYINT(), '11');
+        $subject->alterColumn('doe', ColumnTypeEnum::INT(), '11');
         $subject->dropColumn('foo');
 
         $this->assertEquals(
-            'ALTER TABLE foo (`qux` VARCHAR(255) UNSIGNED  NULL COMMENT \'Lorem'.
-            ' Ipsum dolor sit amet\', `foo`, `` TINYINT(11) NULL DEFAULT \'\', '.
-            'PRIMARY(`bar`), `baz`) ENGINE = INNODB;',
+            'ALTER TABLE foo ADD `qux` VARCHAR(255) NULL DEFAULT \'NULL\' '.
+            'COMMENT \'Lorem Ipsum dolor sit amet\', DROP COLUMN `foo`, MODIFY'.
+            ' `doe` INT(11) NULL, ADD CONSTRAINT PRIMARY KEY(`bar`), ADD '.
+            'CONSTRAINT FK_foo FOREIGN KEY(foo) REFERENCES qux(foo), DROP '.
+            'PRIMARY KEY, DROP FOREIGN KEY FK_bar;',
             $subject->getQuery()
         );
     }

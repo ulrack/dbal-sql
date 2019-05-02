@@ -27,7 +27,7 @@ class ComparatorFilterTest extends TestCase
         $subject = new ComparatorFilter(
             'foo',
             ['bar'],
-            ComparatorEnum::COMPARATOR_EQ()
+            ComparatorEnum::EQ()
         );
 
         $this->assertInstanceOf(ComparatorFilter::class, $subject);
@@ -48,7 +48,7 @@ class ComparatorFilterTest extends TestCase
         $subject = new ComparatorFilter(
             'foo',
             'bar',
-            ComparatorEnum::COMPARATOR_EQ()
+            ComparatorEnum::EQ()
         );
 
         $this->assertEquals('foo = ?', $subject->getFilter());
@@ -67,7 +67,7 @@ class ComparatorFilterTest extends TestCase
         $subject = new ComparatorFilter(
             'foo',
             '',
-            ComparatorEnum::COMPARATOR_IS_NULL()
+            ComparatorEnum::IS_NULL()
         );
 
         $this->assertEquals('foo IS NULL', $subject->getFilter());

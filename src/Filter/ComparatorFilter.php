@@ -75,8 +75,8 @@ class ComparatorFilter implements
      */
     public function getParameters(): array
     {
-        if ($this->comparator === ComparatorEnum::COMPARATOR_NOT_NULL
-        || $this->comparator === ComparatorEnum::COMPARATOR_IS_NULL) {
+        if ($this->comparator === ComparatorEnum::NOT_NULL
+        || $this->comparator === ComparatorEnum::IS_NULL) {
             return [];
         }
 

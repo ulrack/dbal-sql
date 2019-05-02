@@ -29,7 +29,7 @@ class QueryInFilterTest extends TestCase
         $subject = new QueryInFilter(
             'baz',
             new SelectQuery('foo'),
-            ComparatorEnum::COMPARATOR_IN()
+            ComparatorEnum::IN()
         );
 
         $this->assertInstanceOf(QueryInFilter::class, $subject);
@@ -55,7 +55,7 @@ class QueryInFilterTest extends TestCase
         $subject = new QueryInFilter(
             'baz',
             $queryMock,
-            ComparatorEnum::COMPARATOR_IN()
+            ComparatorEnum::IN()
         );
 
         $this->assertInstanceOf(QueryInFilter::class, $subject);

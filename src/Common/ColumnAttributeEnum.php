@@ -9,15 +9,15 @@ namespace Ulrack\Dbal\Sql\Common;
 use Ulrack\Enum\Enum;
 
 /**
- * @method static ColumnAttributeEnum ATTRIBUTE_BINARY()
- * @method static ColumnAttributeEnum ATTRIBUTE_UNSIGNED()
- * @method static ColumnAttributeEnum ATTRIBUTE_ZEROFILL()
- * @method static ColumnAttributeEnum ATTRIBUTE_ON_UPDATE_NOW()
+ * @method static ColumnAttributeEnum BINARY()
+ * @method static ColumnAttributeEnum UNSIGNED()
+ * @method static ColumnAttributeEnum ZEROFILL()
+ * @method static ColumnAttributeEnum ON_UPDATE_NOW()
  */
 class ColumnAttributeEnum extends Enum
 {
-    const ATTRIBUTE_BINARY = 'BINARY';
-    const ATTRIBUTE_UNSIGNED = 'UNSIGNED';
-    const ATTRIBUTE_ZEROFILL = 'UNSIGNED ZEROFILL';
-    const ATTRIBUTE_ON_UPDATE_NOW = 'on update CURRENT_TIMESTAMP';
+    const BINARY = 'BINARY';
+    const UNSIGNED = 'UNSIGNED';
+    const ZEROFILL = 'UNSIGNED ZEROFILL';
+    const ON_UPDATE_NOW = 'on update CURRENT_TIMESTAMP';
 }

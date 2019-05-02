@@ -28,7 +28,7 @@ class UnionQueryTest extends TestCase
         $subject = new UnionQuery(
             new SelectQuery('foo'),
             new SelectQuery('bar'),
-            UnionEnum::UNION_ALL()
+            UnionEnum::ALL()
         );
 
         $this->assertInstanceOf(UnionQuery::class, $subject);

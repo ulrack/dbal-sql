@@ -23,7 +23,7 @@ class ShowQueryTest extends TestCase
      */
     public function testQuery(): void
     {
-        $subject = new ShowQuery(ShowTypeEnum::SHOW_DATABASES());
+        $subject = new ShowQuery(ShowTypeEnum::DATABASES());
         $this->assertInstanceOf(ShowQuery::class, $subject);
         $this->assertEquals('SHOW DATABASES;', $subject->getQuery());
     }

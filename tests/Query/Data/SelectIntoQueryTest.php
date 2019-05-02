@@ -47,7 +47,8 @@ class SelectIntoQueryTest extends TestCase
         );
 
         $this->assertEquals(
-            'SELECT baz, foo AS bar, COUNT(foo) AS count INTO bar FROM foo INNER JOIN baz ON foo.bar = baz.qux;',
+            'SELECT baz, foo AS bar, COUNT(foo) AS count INTO bar FROM foo '.
+            'INNER JOIN baz ON foo.bar = baz.qux;',
             $subject->getQuery()
         );
         $this->assertEquals([], $subject->getParameters());
@@ -77,7 +78,8 @@ class SelectIntoQueryTest extends TestCase
         $subject->addColumn('foo', 'count', 'COUNT');
 
         $this->assertEquals(
-            'SELECT baz, foo AS bar, COUNT(foo) AS count INTO bar IN baz FROM foo ;',
+            'SELECT baz, foo AS bar, COUNT(foo) AS count INTO bar IN baz FROM '.
+            'foo ;',
             $subject->getQuery()
         );
 

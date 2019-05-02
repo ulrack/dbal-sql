@@ -9,18 +9,18 @@ namespace Ulrack\Dbal\Sql\Common;
 use Ulrack\Enum\Enum;
 
 /**
- * @method static ComparatorEnum COMPARATOR_EQ()
- * @method static ComparatorEnum COMPARATOR_NEQ()
- * @method static ComparatorEnum COMPARATOR_GT()
- * @method static ComparatorEnum COMPARATOR_GTEQ()
- * @method static ComparatorEnum COMPARATOR_LT()
- * @method static ComparatorEnum COMPARATOR_LTEQ()
- * @method static ComparatorEnum COMPARATOR_IN()
- * @method static ComparatorEnum COMPARATOR_NIN()
- * @method static ComparatorEnum COMPARATOR_LIKE()
- * @method static ComparatorEnum COMPARATOR_NOT_LIKE()
- * @method static ComparatorEnum COMPARATOR_IS_NULL()
- * @method static ComparatorEnum COMPARATOR_NOT_NULL()
+ * @method static ComparatorEnum EQ()
+ * @method static ComparatorEnum NEQ()
+ * @method static ComparatorEnum GT()
+ * @method static ComparatorEnum GTEQ()
+ * @method static ComparatorEnum LT()
+ * @method static ComparatorEnum LTEQ()
+ * @method static ComparatorEnum IN()
+ * @method static ComparatorEnum NIN()
+ * @method static ComparatorEnum LIKE()
+ * @method static ComparatorEnum NOT_LIKE()
+ * @method static ComparatorEnum IS_NULL()
+ * @method static ComparatorEnum NOT_NULL()
  */
 class ComparatorEnum extends Enum
 {
@@ -30,7 +30,7 @@ class ComparatorEnum extends Enum
      *
      * @var string
      */
-    const COMPARATOR_EQ = '= %s';
+    const EQ = '= %s';
 
     /**
      * Not equals comparator "<>".
@@ -38,7 +38,7 @@ class ComparatorEnum extends Enum
      *
      * @var string
      */
-    const COMPARATOR_NEQ = '<> %s';
+    const NEQ = '<> %s';
 
     /**
      * Greater than comparator ">".
@@ -46,7 +46,7 @@ class ComparatorEnum extends Enum
      *
      * @var string
      */
-    const COMPARATOR_GT = '> %s';
+    const GT = '> %s';
 
     /**
      * Greater than or equals comparator ">=".
@@ -54,7 +54,7 @@ class ComparatorEnum extends Enum
      *
      * @var string
      */
-    const COMPARATOR_GTEQ = '>= %s';
+    const GTEQ = '>= %s';
 
     /**
      * Less than comparator "<".
@@ -62,7 +62,7 @@ class ComparatorEnum extends Enum
      *
      * @var string
      */
-    const COMPARATOR_LT = '< %s';
+    const LT = '< %s';
 
     /**
      * Less than or equals comparator "<=".
@@ -70,7 +70,7 @@ class ComparatorEnum extends Enum
      *
      * @var string
      */
-    const COMPARATOR_LTEQ = '<= %s';
+    const LTEQ = '<= %s';
 
     /**
      * In comparator.
@@ -78,7 +78,7 @@ class ComparatorEnum extends Enum
      *
      * @var string
      */
-    const COMPARATOR_IN = 'IN (%s)';
+    const IN = 'IN (%s)';
 
     /**
      * Not in comparator.
@@ -86,7 +86,7 @@ class ComparatorEnum extends Enum
      *
      * @var string
      */
-    const COMPARATOR_NIN = 'NOT IN (%s)';
+    const NIN = 'NOT IN (%s)';
 
     /**
      * Like comparator.
@@ -94,7 +94,7 @@ class ComparatorEnum extends Enum
      *
      * @var string
      */
-    const COMPARATOR_LIKE = 'LIKE %s';
+    const LIKE = 'LIKE %s';
 
     /**
      * Not like comparator.
@@ -102,7 +102,7 @@ class ComparatorEnum extends Enum
      *
      * @var string
      */
-    const COMPARATOR_NOT_LIKE = 'NOT LIKE %s';
+    const NOT_LIKE = 'NOT LIKE %s';
 
     /**
      * Is null comparator.
@@ -110,7 +110,7 @@ class ComparatorEnum extends Enum
      *
      * @var string
      */
-    const COMPARATOR_IS_NULL = 'IS NULL';
+    const IS_NULL = 'IS NULL';
 
     /**
      * Not null comparator.
@@ -118,5 +118,5 @@ class ComparatorEnum extends Enum
      *
      * @var string
      */
-    const COMPARATOR_NOT_NULL = 'NOT NULL';
+    const NOT_NULL = 'NOT NULL';
 }

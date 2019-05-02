@@ -15,56 +15,91 @@ use Ulrack\Dbal\Sql\Common\ColumnDefaultEnum;
 abstract class AbstractTableQuery implements QueryInterface
 {
     /**
-     * Contains the indices for the table query.
-     *
-     * @var array
-     */
-    private $indices = ['add' => [], 'drop' => []];
-
-    /**
      * Contains the columns for the table query.
      *
      * @var array
      */
-    private $columns = ['add' => [], 'drop' => [], 'alter' => [], 'change' => []];
+    private $columns = ['add' => [], 'drop' => [], 'alter' => []];
 
     /**
-     * Adds an add index operation to the table query.
+     * Contains the keys for the table.
      *
-     * @param IndexTypeEnum $type
-     * @param string        $columns
+     * @var array
+     */
+    private $keys = ['add' => [], 'drop' => []];
+
+    /**
+     * Adds a primary key to the query.
+     *
+     * @param string ...$keys
      *
      * @return void
      */
-    public function addIndex(IndexTypeEnum $type, string ...$columns): void
+    public function addPrimaryKey(string ...$keys): void
     {
-        $this->indices['add'][] = sprintf(
-            '%s(%s)',
-            $type,
-            empty($columns) ?: '`' . implode('`, `', $columns) . '`'
+        $this->keys['add'][] = sprintf(
+            'CONSTRAINT PRIMARY KEY(`%s`)',
+            implode('`, `', $keys)
         );
     }
 
     /**
-     * Adds a drop index operation to the query.
-     *
-     * @param string $column
+     * Drops the primary key from the table.
      *
      * @return void
      */
-    public function dropIndex(string $column): void
+    public function dropPrimaryKey(): void
     {
-        $this->indices['drop'][] = sprintf('`%s`', $column);
+        $this->keys['drop'][] = 'DROP PRIMARY KEY';
     }
 
     /**
-     * Retrieves a list of index operations.
+     * Adds a foreign key to the table query.
+     *
+     * @param  string        $column
+     * @param  string        $table
+     * @param  string        $tableColumn
+     *
+     * @return void
+     */
+    public function addForeignKey(
+        string $keyName,
+        string $column,
+        string $table,
+        string $tableColumn
+    ): void {
+        $this->keys['add'][] = sprintf(
+            'CONSTRAINT %s FOREIGN KEY(%s) REFERENCES %s(%s)',
+            $keyName,
+            $column,
+            $table,
+            $tableColumn
+        );
+    }
+
+    /**
+     * Drops a foreign key.
+     *
+     * @param string $keyName
+     *
+     * @return void
+     */
+    public function dropForeignKey(string $keyName): void
+    {
+        $this->keys['drop'][] = sprintf(
+            'DROP FOREIGN KEY %s',
+            $keyName
+        );
+    }
+
+    /**
+     * Returns the key query statements.
      *
      * @return array
      */
-    public function getIndices(): array
+    public function getKeys(): array
     {
-        return $this->indices;
+        return $this->keys;
     }
 
     /**
@@ -80,8 +115,6 @@ abstract class AbstractTableQuery implements QueryInterface
      * @param string              $comment
      *
      * @return void
-     *
-     * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
      */
     public function addColumn(
         string $column,
@@ -91,13 +124,13 @@ abstract class AbstractTableQuery implements QueryInterface
         ColumnAttributeEnum $attribute = null,
         bool $null = true,
         bool $autoIncrement = false,
+        bool $unique = false,
         string $comment = ''
     ): void {
-        $default = $default !== null && (string) $default
-            ? '' : "'" . $default . "'";
+        $default = $default !== null ? "'" . $default . "'" : '';
 
         $this->columns['add'][] = sprintf(
-            '`%s` %s%s%s%s%s%s%s',
+            '`%s` %s%s%s%s%s%s%s%s',
             $column,
             $type,
             $typeOption === null ? '' : sprintf('(%s)', $typeOption),
@@ -105,6 +138,7 @@ abstract class AbstractTableQuery implements QueryInterface
             $null ? ' NULL' : ' NOT NULL',
             $default === '' ? '' : ' DEFAULT ' . $default,
             $autoIncrement ? ' AUTO_INCREMENT' : '',
+            $unique ? ' UNIQUE' : '',
             empty($comment) ? '' : sprintf(" COMMENT '%s'", $comment)
         );
     }
@@ -123,10 +157,6 @@ abstract class AbstractTableQuery implements QueryInterface
      * @param string              $newName
      *
      * @return void
-     *
-     * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
-     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
-     * @SuppressWarnings(PHPMD.NPathComplexity)
      */
     public function alterColumn(
         string $column,
@@ -136,21 +166,22 @@ abstract class AbstractTableQuery implements QueryInterface
         ColumnAttributeEnum $attribute = null,
         bool $null = true,
         bool $autoIncrement = false,
+        bool $unique = false,
         string $comment = '',
         string $newName = ''
     ): void {
-        $default = $default !== null && (string) $default
-            ? '' : "'" . $default . "'";
+        $default = $default !== null ? "'" . $default . "'" : '';
 
-        $this->columns[empty($newName) ? 'alter' : 'change'][] = sprintf(
-            '`%s` %s%s%s%s%s%s%s',
-            $column . empty($newName) ? '' : ' `' . $newName . '`',
+        $this->columns['alter'][] = sprintf(
+            (empty($newName) ? 'MODIFY ' : 'ALTER ') . '`%s` %s%s%s%s%s%s%s%s',
+            $column . (empty($newName) ? '' : '` `' . $newName),
             $type,
             $typeOption === null ? '' : sprintf('(%s)', $typeOption),
             $attribute === null ? '' : sprintf(' %s ', $attribute),
             $null ? ' NULL' : ' NOT NULL',
             $default === '' ? '' : ' DEFAULT ' . $default,
             $autoIncrement ? ' AUTO_INCREMENT' : '',
+            $unique ? ' UNIQUE' : '',
             empty($comment) ? '' : sprintf(" COMMENT '%s'", $comment)
         );
     }
@@ -164,7 +195,7 @@ abstract class AbstractTableQuery implements QueryInterface
      */
     public function dropColumn(string $column): void
     {
-        $this->columns['drop'][] = sprintf('`%s`', $column);
+        $this->columns['drop'][] = sprintf('DROP COLUMN `%s`', $column);
     }
 
     /**

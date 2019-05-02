@@ -9,13 +9,13 @@ namespace Ulrack\Dbal\Sql\Common;
 use Ulrack\Enum\Enum;
 
 /**
- * @method static ColumnDefaultEnum DEFAULT_NONE()
+ * @method static ColumnDefaultEnum NONE()
  * @method static ColumnDefaultEnum DEFAULT_NULL()
- * @method static ColumnDefaultEnum DEFAULT_CURRENT_TIMESTAMP()
+ * @method static ColumnDefaultEnum CURRENT_TIMESTAMP()
  */
 class ColumnDefaultEnum extends Enum
 {
-    const DEFAULT_NONE = '';
+    const NONE = '';
     const DEFAULT_NULL = 'NULL';
-    const DEFAULT_CURRENT_TIMESTAMP = 'CURRENT_TIMESTAMP';
+    const CURRENT_TIMESTAMP = 'CURRENT_TIMESTAMP';
 }

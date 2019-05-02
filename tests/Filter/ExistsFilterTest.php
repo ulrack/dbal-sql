@@ -29,7 +29,11 @@ class ExistsFilterTest extends TestCase
 
         $this->assertInstanceOf(ExistsFilter::class, $subject);
 
-        $this->assertEquals('EXISTS (SELECT * FROM foo )', $subject->getFilter());
+        $this->assertEquals(
+            'EXISTS (SELECT * FROM foo )',
+            $subject->getFilter()
+        );
+
         $this->assertEquals([], $subject->getParameters());
     }
 
@@ -51,7 +55,11 @@ class ExistsFilterTest extends TestCase
 
         $this->assertInstanceOf(ExistsFilter::class, $subject);
 
-        $this->assertEquals('EXISTS (SELECT * FROM foo)', $subject->getFilter());
+        $this->assertEquals(
+            'EXISTS (SELECT * FROM foo)',
+            $subject->getFilter()
+        );
+
         $this->assertEquals([], $subject->getParameters());
     }
 }

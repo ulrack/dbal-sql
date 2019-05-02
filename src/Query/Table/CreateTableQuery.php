@@ -49,7 +49,7 @@ class CreateTableQuery extends AbstractTableQuery
                 ', ',
                 array_merge(
                     $this->getColumns()['add'],
-                    $this->getIndices()['add']
+                    $this->getKeys()['add']
                 )
             ),
             $this->engine

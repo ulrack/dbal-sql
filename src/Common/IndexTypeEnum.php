@@ -9,17 +9,15 @@ namespace Ulrack\Dbal\Sql\Common;
 use Ulrack\Enum\Enum;
 
 /**
- * @method static IndexTypeEnum INDEX_PRIMARY()
- * @method static IndexTypeEnum INDEX_UNIQUE()
- * @method static IndexTypeEnum INDEX_INDEX()
- * @method static IndexTypeEnum INDEX_FULLTEXT()
- * @method static IndexTypeEnum INDEX_SPATIAL()
+ * @method static IndexTypeEnum UNIQUE()
+ * @method static IndexTypeEnum INDEX()
+ * @method static IndexTypeEnum FULLTEXT()
+ * @method static IndexTypeEnum SPATIAL()
  */
 class IndexTypeEnum extends Enum
 {
-    const INDEX_PRIMARY = 'PRIMARY';
-    const INDEX_UNIQUE = 'UNIQUE';
-    const INDEX_INDEX = 'INDEX';
-    const INDEX_FULLTEXT = 'FULLTEXT';
-    const INDEX_SPATIAL = 'SPATIAL';
+    const UNIQUE = 'UNIQUE INDEX';
+    const INDEX = 'INDEX';
+    const FULLTEXT = 'FULLTEXT INDEX';
+    const SPATIAL = 'SPATIAL INDEX';
 }

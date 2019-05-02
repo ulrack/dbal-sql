@@ -4,6 +4,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 2.0.0 - 2019-05-02
+### Added
+- `Ulrack\Dbal\Sql\Query\Index\CreateIndexQuery`
+- `Ulrack\Dbal\Sql\Query\Index\DropIndexQuery`
+
+### Changed
+- Enums to not include the name of the enum.
+- Fixed old references.
+- Fixed tests.
+
+### Deprecated
+- Nothing
+
+### Removed
+- Nothing
+
+### Fixed
+- `CreateTableQuery` and `AlterTableQuery` output.
+
+### Security
+- Nothing
+
 ## 1.0.0 - 2019-05-02
 ### Added
 - `Ulrack\Dbal\Sql\Common\ColumnAttributeEnum`
@@ -62,4 +84,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 - Nothing
 
-[Unreleased]: https://github.com/ulrack/dbal-sql/compare/1.0.0...HEAD
+[Unreleased]: https://github.com/ulrack/dbal-sql/compare/2.0.0...HEAD
+[2.0.0]: https://github.com/ulrack/dbal-sql/compare/1.0.0...2.0.0

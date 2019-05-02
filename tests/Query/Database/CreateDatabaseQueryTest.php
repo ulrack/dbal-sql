@@ -30,7 +30,8 @@ class CreateDatabaseQueryTest extends TestCase
         $this->assertInstanceOf(CreateDatabaseQuery::class, $subject);
 
         $this->assertEquals(
-            'CREATE DATABASE IF NOT EXISTS foo CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;',
+            'CREATE DATABASE IF NOT EXISTS foo CHARACTER SET utf8mb4 COLLATE '.
+            'utf8mb4_unicode_ci;',
             $subject->getQuery()
         );
     }

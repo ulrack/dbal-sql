@@ -9,8 +9,8 @@ namespace Ulrack\Dbal\Sql\Common;
 use Ulrack\Enum\Enum;
 
 /**
- * @method static OperatorEnum OPERATOR_ANY()
- * @method static OperatorEnum OPERATOR_ALL()
+ * @method static OperatorEnum ANY()
+ * @method static OperatorEnum ALL()
  */
 class OperatorEnum extends Enum
 {
@@ -19,12 +19,12 @@ class OperatorEnum extends Enum
      *
      * @var string
      */
-    const OPERATOR_ANY = 'ANY';
+    const ANY = 'ANY';
 
     /**
      * Creates a ALL matching filter.
      *
      * @var string
      */
-    const OPERATOR_ALL = 'ALL';
+    const ALL = 'ALL';
 }

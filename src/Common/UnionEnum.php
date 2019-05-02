@@ -9,8 +9,8 @@ namespace Ulrack\Dbal\Sql\Common;
 use Ulrack\Enum\Enum;
 
 /**
- * @method static UnionEnum UNION_DISTINCT()
- * @method static UnionEnum UNION_ALL()
+ * @method static UnionEnum DISTINCT()
+ * @method static UnionEnum ALL()
  */
 class UnionEnum extends Enum
 {
@@ -19,12 +19,12 @@ class UnionEnum extends Enum
      *
      * @var string
      */
-    const UNION_DISTINCT = '%s UNION %s';
+    const DISTINCT = '%s UNION %s';
 
     /**
      * Defines the union query which selects all values.
      *
      * @var string
      */
-    const UNION_ALL = '%s UNION ALL %s';
+    const ALL = '%s UNION ALL %s';
 }

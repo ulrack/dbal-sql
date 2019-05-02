@@ -27,7 +27,7 @@ class QueryFilterGroupTest extends TestCase
     {
         $subject = new QueryFilterGroup;
         $subject->addFilter(
-            new ComparatorFilter('foo', 'bar', ComparatorEnum::COMPARATOR_EQ())
+            new ComparatorFilter('foo', 'bar', ComparatorEnum::EQ())
         );
 
         $this->assertEquals('foo = ?', $subject->getFilterGroup());

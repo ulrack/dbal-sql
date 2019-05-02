@@ -30,13 +30,16 @@ class QueryOperatorFilterTest extends TestCase
         $subject = new QueryOperatorFilter(
             'foo',
             new SelectQuery('bar'),
-            ComparatorEnum::COMPARATOR_EQ(),
-            OperatorEnum::OPERATOR_ALL()
+            ComparatorEnum::EQ(),
+            OperatorEnum::ALL()
         );
 
         $this->assertInstanceOf(QueryOperatorFilter::class, $subject);
 
-        $this->assertEquals('foo = ALL (SELECT * FROM bar )', $subject->getFilter());
+        $this->assertEquals(
+            'foo = ALL (SELECT * FROM bar )',
+            $subject->getFilter()
+        );
         $this->assertEquals([], $subject->getParameters());
     }
 
@@ -57,8 +60,8 @@ class QueryOperatorFilterTest extends TestCase
         $subject = new QueryOperatorFilter(
             'foo',
             $queryMock,
-            ComparatorEnum::COMPARATOR_EQ(),
-            OperatorEnum::OPERATOR_ALL()
+            ComparatorEnum::EQ(),
+            OperatorEnum::ALL()
         );
 
         $this->assertInstanceOf(QueryOperatorFilter::class, $subject);
