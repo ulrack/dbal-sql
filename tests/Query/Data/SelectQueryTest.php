@@ -74,7 +74,7 @@ class SelectQueryTest extends TestCase
         $subject = new SelectQuery('foo');
 
         $this->assertEquals(
-            'SELECT * FROM foo ;',
+            'SELECT * FROM foo;',
             $subject->getQuery()
         );
 

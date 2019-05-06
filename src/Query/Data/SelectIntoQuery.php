@@ -107,15 +107,15 @@ class SelectIntoQuery implements
     public function getQuery(): string
     {
         return sprintf(
-            'SELECT %s INTO %s%s FROM %s %s;',
+            'SELECT %s INTO %s%s FROM %s;',
             implode(', ', $this->columns),
             $this->newTable,
             $this->externalDatabase,
-            $this->selectTable,
             implode(
                 ' ',
                 array_filter(
                     [
+                        $this->selectTable,
                         $this->getJoin(),
                         $this->getFilter(),
                         $this->getPage()

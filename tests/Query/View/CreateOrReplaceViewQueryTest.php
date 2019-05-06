@@ -28,7 +28,7 @@ class CreateOrReplaceViewQueryTest extends TestCase
         $this->assertInstanceOf(CreateOrReplaceViewQuery::class, $subject);
 
         $this->assertEquals(
-            'CREATE VIEW OR REPLACE foo AS SELECT * FROM foo ;',
+            'CREATE VIEW OR REPLACE foo AS SELECT * FROM foo;',
             $subject->getQuery()
         );
 

@@ -79,7 +79,7 @@ class SelectIntoQueryTest extends TestCase
 
         $this->assertEquals(
             'SELECT baz, foo AS bar, COUNT(foo) AS count INTO bar IN baz FROM '.
-            'foo ;',
+            'foo;',
             $subject->getQuery()
         );
 

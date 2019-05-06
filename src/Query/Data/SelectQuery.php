@@ -126,13 +126,13 @@ class SelectQuery implements
     public function getQuery(): string
     {
         return sprintf(
-            'SELECT ' . ($this->distinct ? 'DISTINCT ' : '') . '%s FROM %s %s;',
+            'SELECT ' . ($this->distinct ? 'DISTINCT ' : '') . '%s FROM %s;',
             count($this->columns) ? implode(', ', $this->columns) : '*',
-            $this->table,
             implode(
                 ' ',
                 array_filter(
                     [
+                        $this->table,
                         $this->getJoin(),
                         $this->getFilter(),
                         implode(' ', $this->groupBy),

@@ -56,12 +56,12 @@ class BackupDatabaseQuery implements QueryInterface
     public function getQuery(): string
     {
         return sprintf(
-            'BACKUP DATABASE %s TO %s %s;',
+            'BACKUP DATABASE %s TO %s%s;',
             $this->database,
             implode(', ', array_map(function ($value) {
                 return sprintf('DISK = %s', $value);
             }, $this->files)),
-            $this->withDifferential ? 'WITH DIFFERENTIAL' : ''
+            $this->withDifferential ? ' WITH DIFFERENTIAL' : ''
         );
     }
 }

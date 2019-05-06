@@ -34,7 +34,7 @@ class QueryInFilterTest extends TestCase
 
         $this->assertInstanceOf(QueryInFilter::class, $subject);
 
-        $this->assertEquals('baz IN (SELECT * FROM foo )', $subject->getFilter());
+        $this->assertEquals('baz IN (SELECT * FROM foo)', $subject->getFilter());
         $this->assertEquals([], $subject->getParameters());
     }
 

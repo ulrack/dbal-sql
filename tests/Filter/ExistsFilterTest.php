@@ -30,7 +30,7 @@ class ExistsFilterTest extends TestCase
         $this->assertInstanceOf(ExistsFilter::class, $subject);
 
         $this->assertEquals(
-            'EXISTS (SELECT * FROM foo )',
+            'EXISTS (SELECT * FROM foo)',
             $subject->getFilter()
         );
 

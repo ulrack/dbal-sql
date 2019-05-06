@@ -80,15 +80,15 @@ class UpdateQuery implements
     public function getQuery(): string
     {
         return sprintf(
-            'UPDATE %s SET %s %s;',
+            'UPDATE %s SET %s;',
             $this->table,
-            count($this->columns)
-                ? implode('=?, ', array_keys($this->columns)) . '=?'
-                : '',
             implode(
                 ' ',
                 array_filter(
                     [
+                        count($this->columns)
+                            ? implode('=?, ', array_keys($this->columns)) . '=?'
+                            : '',
                         $this->getFilter(),
                         $this->getSort(),
                         $this->getPage()

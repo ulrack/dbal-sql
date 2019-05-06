@@ -46,12 +46,12 @@ class DeleteQuery implements
     public function getQuery(): string
     {
         return sprintf(
-            'DELETE FROM %s %s;',
-            $this->table,
+            'DELETE FROM %s;',
             implode(
                 ' ',
                 array_filter(
                     [
+                        $this->table,
                         $this->getFilter(),
                         $this->getPage()
                     ]

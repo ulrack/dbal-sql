@@ -32,7 +32,7 @@ class InsertIntoSelectQueryTest extends TestCase
         $this->assertInstanceOf(InsertIntoSelectQuery::class, $subject);
         $subject->addColumn('baz');
         $this->assertEquals(
-            'INSERT INTO foo (baz) SELECT qux FROM bar ;',
+            'INSERT INTO foo (baz) SELECT qux FROM bar;',
             $subject->getQuery()
         );
 
@@ -62,7 +62,7 @@ class InsertIntoSelectQueryTest extends TestCase
             'INSERT INTO foo (baz) SELECT * FROM foo;',
             $subject->getQuery()
         );
-        
+
         $this->assertEquals([], $subject->getParameters());
     }
 }

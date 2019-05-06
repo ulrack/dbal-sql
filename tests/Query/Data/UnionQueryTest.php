@@ -34,7 +34,7 @@ class UnionQueryTest extends TestCase
         $this->assertInstanceOf(UnionQuery::class, $subject);
 
         $this->assertEquals(
-            'SELECT * FROM foo  UNION ALL SELECT * FROM bar ;',
+            'SELECT * FROM foo UNION ALL SELECT * FROM bar;',
             $subject->getQuery()
         );
 

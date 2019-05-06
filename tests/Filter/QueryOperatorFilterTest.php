@@ -37,7 +37,7 @@ class QueryOperatorFilterTest extends TestCase
         $this->assertInstanceOf(QueryOperatorFilter::class, $subject);
 
         $this->assertEquals(
-            'foo = ALL (SELECT * FROM bar )',
+            'foo = ALL (SELECT * FROM bar)',
             $subject->getFilter()
         );
         $this->assertEquals([], $subject->getParameters());

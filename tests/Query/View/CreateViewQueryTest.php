@@ -28,7 +28,7 @@ class CreateViewQueryTest extends TestCase
         $this->assertInstanceOf(CreateViewQuery::class, $subject);
 
         $this->assertEquals(
-            'CREATE VIEW foo AS SELECT * FROM foo ;',
+            'CREATE VIEW foo AS SELECT * FROM foo;',
             $subject->getQuery()
         );
 
