@@ -25,13 +25,13 @@ Filters can be grouped in the `QueryFilterGroup` object. All filters inside this
 group are separated by an AND statement. If a query object accepts multiple filter
 groups, the filter groups will be separated by an OR statement.
 
-- [QueryFilterGroup](src/Filter/QueryFilterGroup.php): The base filter object
+- [QueryFilterGroup](src/Component/Filter/QueryFilterGroup.php): The base filter object
 expected by most queries.
 
 Filters can be added to the group after instantiation:
 ```php
-use Ulrack\Dbal\Sql\Filter\QueryFilterGroup;
-use Ulrack\Dbal\Sql\Filter\ComparatorFilter;
+use Ulrack\Dbal\Sql\Component\Filter\QueryFilterGroup;
+use Ulrack\Dbal\Sql\Component\Filter\ComparatorFilter;
 use Ulrack\Dbal\Sql\Common\ComparatorEnum;
 
 // Create the filter group
@@ -48,15 +48,15 @@ $filter = new ComparatorFilter(
 $filterGroup->addFilter($filter);
 ```
 
-- [ComparatorFilter](src/Filter/ComparatorFilter.php): Compare a column to a
+- [ComparatorFilter](src/Component/Filter/ComparatorFilter.php): Compare a column to a
 value with a standard comparator.
-- [ExistsFilter](src/Filter/ExistsFilter.php): Adds an EXISTS statement with a
+- [ExistsFilter](src/Component/Filter/ExistsFilter.php): Adds an EXISTS statement with a
 sub-query as a filter.
-- [QueryInFilter](src/Filter/QueryInFilter.php): Connects a default comparator
+- [QueryInFilter](src/Component/Filter/QueryInFilter.php): Connects a default comparator
 with a sub-query as a filter.
-- [QueryOperatorFilter](src/Filter/QueryOperatorFilter.php): Create a ANY or ALL
+- [QueryOperatorFilter](src/Component/Filter/QueryOperatorFilter.php): Create a ANY or ALL
 filter in combination with a comparator for a sub-query.
-- [RelationalComparatorFilter](src/Filter/RelationalComparatorFilter.php): Creates
+- [RelationalComparatorFilter](src/Component/Filter/RelationalComparatorFilter.php): Creates
 a direct value injected filter. This filter does not use a parameter, but
 operates similar to the `ComparatorFilter`.
 
@@ -97,51 +97,51 @@ the object. [Enums](https://github.com/ulrack/enum) are used for this.
 The queries are sorted by their affecting goal. There are also a few standard
 queries which don't fit in any category.
 
-- [BatchQuery](src/Query/BatchQuery.php): Joins multiple queries for a single
+- [BatchQuery](src/Component/Query/BatchQuery.php): Joins multiple queries for a single
 line execution.
-- [RawQuery](src/Query/RawQuery.php): If none of the query object fit the bill,
+- [RawQuery](src/Component/Query/RawQuery.php): If none of the query object fit the bill,
 this object can be used to execute a custom query.
 
 ##### Context
 
-- [ShowQuery](src/Query/Context/ShowQuery.php)
-- [UseQuery](src/Query/Context/UseQuery.php)
+- [ShowQuery](src/Component/Query/Context/ShowQuery.php)
+- [UseQuery](src/Component/Query/Context/UseQuery.php)
 
 ##### Data
 
-- [DeleteQuery](src/Query/Data/DeleteQuery.php)
-- [InsertIntoSelectQuery](src/Query/Data/InsertIntoSelectQuery.php)
-- [InsertQuery](src/Query/Data/InsertQuery.php)
-- [SelectIntoQuery](src/Query/Data/SelectIntoQuery.php)
-- [SelectQuery](src/Query/Data/SelectQuery.php)
-- [UnionQuery](src/Query/Data/UnionQuery.php)
-- [UpdateQuery](src/Query/Data/UpdateQuery.php)
+- [DeleteQuery](src/Component/Query/Data/DeleteQuery.php)
+- [InsertIntoSelectQuery](src/Component/Query/Data/InsertIntoSelectQuery.php)
+- [InsertQuery](src/Component/Query/Data/InsertQuery.php)
+- [SelectIntoQuery](src/Component/Query/Data/SelectIntoQuery.php)
+- [SelectQuery](src/Component/Query/Data/SelectQuery.php)
+- [UnionQuery](src/Component/Query/Data/UnionQuery.php)
+- [UpdateQuery](src/Component/Query/Data/UpdateQuery.php)
 
 ##### Database
 
-- [AlterDatabaseQuery](src/Query/Database/AlterDatabaseQuery.php)
-- [BackupDatabaseQuery](src/Query/Database/BackupDatabaseQuery.php)
-- [CreateDatabaseQuery](src/Query/Database/CreateDatabaseQuery.php)
-- [DropDatabaseQuery](src/Query/Database/DropDatabaseQuery.php)
+- [AlterDatabaseQuery](src/Component/Query/Database/AlterDatabaseQuery.php)
+- [BackupDatabaseQuery](src/Component/Query/Database/BackupDatabaseQuery.php)
+- [CreateDatabaseQuery](src/Component/Query/Database/CreateDatabaseQuery.php)
+- [DropDatabaseQuery](src/Component/Query/Database/DropDatabaseQuery.php)
 
 ##### Table
 
-- [AbstractTableQuery](src/Query/Table/AbstractTableQuery.php): Forms the base
+- [AbstractTableQuery](src/Component/Query/Table/AbstractTableQuery.php): Forms the base
 for the other table queries.
-- [AlterTableQuery](src/Query/Table/AlterTableQuery.php)
-- [CreateTableQuery](src/Query/Table/CreateTableQuery.php)
-- [DropTableQuery](src/Query/Table/DropTableQuery.php)
+- [AlterTableQuery](src/Component/Query/Table/AlterTableQuery.php)
+- [CreateTableQuery](src/Component/Query/Table/CreateTableQuery.php)
+- [DropTableQuery](src/Component/Query/Table/DropTableQuery.php)
 
 ##### View
 
-- [CreateOrReplaceViewQuery](src/Query/View/CreateOrReplaceViewQuery.php)
-- [CreateViewQuery](src/Query/View/CreateViewQuery.php)
-- [DropViewQuery](src/Query/View/DropViewQuery.php)
+- [CreateOrReplaceViewQuery](src/Component/Query/View/CreateOrReplaceViewQuery.php)
+- [CreateViewQuery](src/Component/Query/View/CreateViewQuery.php)
+- [DropViewQuery](src/Component/Query/View/DropViewQuery.php)
 
 ##### Index
 
-- [CreateIndexQuery](src/Query/Index/CreateIndexQuery)
-- [DropIndexQuery](src/Query/Index/DropIndexQuery)
+- [CreateIndexQuery](src/Component/Query/Index/CreateIndexQuery)
+- [DropIndexQuery](src/Component/Query/Index/DropIndexQuery)
 
 ## Change log
 

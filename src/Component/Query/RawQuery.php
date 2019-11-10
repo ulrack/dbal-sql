@@ -1,0 +1,61 @@
+<?php
+/**
+ * Copyright (C) Jyxon, Inc. All rights reserved.
+ * See LICENSE for license details.
+ */
+
+namespace Ulrack\Dbal\Sql\Component\Query;
+
+use Ulrack\Dbal\Common\QueryInterface;
+use Ulrack\Dbal\Common\ParameterizedQueryComponentInterface;
+
+class RawQuery implements
+    QueryInterface,
+    ParameterizedQueryComponentInterface
+{
+    /**
+     * Contains the raw query.
+     *
+     * @var string
+     */
+    private $query;
+
+    /**
+     * Contains the parameters for the query.
+     *
+     * @var array
+     */
+    private $parameters;
+
+    /**
+     * Constructor
+     *
+     * @param string $query
+     * @param array $parameters
+     */
+    public function __construct(string $query, array $parameters = [])
+    {
+        $this->query      = $query;
+        $this->parameters = $parameters;
+    }
+
+    /**
+     * Builds the query and returns it.
+     *
+     * @return string
+     */
+    public function getQuery(): string
+    {
+        return $this->query;
+    }
+
+    /**
+     * Returns the parameters for a query.
+     *
+     * @return array
+     */
+    public function getParameters(): array
+    {
+        return $this->parameters;
+    }
+}
