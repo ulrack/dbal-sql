@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (C) Jyxon, Inc. All rights reserved.
+ * Copyright (C) GrizzIT, Inc. All rights reserved.
  * See LICENSE for license details.
  */
 
@@ -34,7 +34,7 @@ class InsertQueryTest extends TestCase
             'INSERT INTO foo (bar) VALUES (?);',
             $subject->getQuery()
         );
-        
+
         $this->assertEquals(['baz'], $subject->getParameters());
 
         $this->expectException(InvalidArgumentException::class);
