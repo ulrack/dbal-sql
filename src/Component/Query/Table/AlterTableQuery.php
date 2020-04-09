@@ -6,9 +6,6 @@
 
 namespace Ulrack\Dbal\Sql\Component\Query\Table;
 
-use Ulrack\Dbal\Common\QueryInterface;
-use Ulrack\Dbal\Sql\Common\IndexTypeEnum;
-
 class AlterTableQuery extends AbstractTableQuery
 {
     /**

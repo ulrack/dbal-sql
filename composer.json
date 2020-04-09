@@ -10,7 +10,7 @@
     {
         "php": "^7.2",
         "ulrack/dbal": "^1.0",
-        "ulrack/enum": "^1.0"
+        "grizz-it/enum": "^1.0"
     },
     "authors": [
     {

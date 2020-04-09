@@ -6,7 +6,7 @@
 
 namespace Ulrack\Dbal\Sql\Common;
 
-use Ulrack\Enum\Enum;
+use GrizzIt\Enum\Enum;
 
 /**
  * @method static ColumnTypeEnum TINYINT()

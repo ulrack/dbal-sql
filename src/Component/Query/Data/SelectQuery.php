@@ -6,7 +6,6 @@
 
 namespace Ulrack\Dbal\Sql\Component\Query\Data;
 
-use Ulrack\Dbal\Common\QueryInterface;
 use Ulrack\Dbal\Common\FilterableQueryInterface;
 use Ulrack\Dbal\Common\PageableQueryInterface;
 use Ulrack\Dbal\Common\SortableQueryInterface;

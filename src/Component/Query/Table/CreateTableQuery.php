@@ -6,8 +6,6 @@
 
 namespace Ulrack\Dbal\Sql\Component\Query\Table;
 
-use Ulrack\Dbal\Common\QueryInterface;
-
 class CreateTableQuery extends AbstractTableQuery
 {
     /**

@@ -81,7 +81,7 @@ implemented by queries that support sorting.
 #### Enums
 
 Some options and queries have a limitation in the options that can be passed to
-the object. [Enums](https://github.com/ulrack/enum) are used for this.
+the object. [Enums](https://github.com/grizz-it/enum) are used for this.
 
 - [ColumnAttributeEnum](src/Common/ColumnAttributeEnum.php)
 - [ColumnDefaultEnum](src/Common/ColumnDefaultEnum.php)
@@ -153,7 +153,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) and [CODE_OF_CONDUCT](CODE_OF_CONDUCT
 
 ## MIT License
 
-Copyright (c) 2019 GrizzIT
+Copyright (c) GrizzIT
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

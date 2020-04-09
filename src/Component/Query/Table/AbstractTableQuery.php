@@ -9,7 +9,6 @@ namespace Ulrack\Dbal\Sql\Component\Query\Table;
 use Ulrack\Dbal\Common\QueryInterface;
 use Ulrack\Dbal\Sql\Common\ColumnTypeEnum;
 use Ulrack\Dbal\Sql\Common\ColumnAttributeEnum;
-use Ulrack\Dbal\Sql\Common\IndexTypeEnum;
 use Ulrack\Dbal\Sql\Common\ColumnDefaultEnum;
 
 abstract class AbstractTableQuery implements QueryInterface
