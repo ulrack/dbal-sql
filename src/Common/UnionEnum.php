@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (C) GrizzIT, Inc. All rights reserved.
  * See LICENSE for license details.
@@ -19,12 +20,12 @@ class UnionEnum extends Enum
      *
      * @var string
      */
-    const DISTINCT = '%s UNION %s';
+    public const DISTINCT = '%s UNION %s';
 
     /**
      * Defines the union query which selects all values.
      *
      * @var string
      */
-    const ALL = '%s UNION ALL %s';
+    public const ALL = '%s UNION ALL %s';
 }

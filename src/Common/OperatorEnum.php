@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (C) GrizzIT, Inc. All rights reserved.
  * See LICENSE for license details.
@@ -19,12 +20,12 @@ class OperatorEnum extends Enum
      *
      * @var string
      */
-    const ANY = 'ANY';
+    public const ANY = 'ANY';
 
     /**
      * Creates a ALL matching filter.
      *
      * @var string
      */
-    const ALL = 'ALL';
+    public const ALL = 'ALL';
 }

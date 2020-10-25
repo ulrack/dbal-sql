@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (C) GrizzIT, Inc. All rights reserved.
  * See LICENSE for license details.
@@ -30,7 +31,7 @@ class ComparatorEnum extends Enum
      *
      * @var string
      */
-    const EQ = '= %s';
+    public const EQ = '= %s';
 
     /**
      * Not equals comparator "<>".
@@ -38,7 +39,7 @@ class ComparatorEnum extends Enum
      *
      * @var string
      */
-    const NEQ = '<> %s';
+    public const NEQ = '<> %s';
 
     /**
      * Greater than comparator ">".
@@ -46,7 +47,7 @@ class ComparatorEnum extends Enum
      *
      * @var string
      */
-    const GT = '> %s';
+    public const GT = '> %s';
 
     /**
      * Greater than or equals comparator ">=".
@@ -54,7 +55,7 @@ class ComparatorEnum extends Enum
      *
      * @var string
      */
-    const GTEQ = '>= %s';
+    public const GTEQ = '>= %s';
 
     /**
      * Less than comparator "<".
@@ -62,7 +63,7 @@ class ComparatorEnum extends Enum
      *
      * @var string
      */
-    const LT = '< %s';
+    public const LT = '< %s';
 
     /**
      * Less than or equals comparator "<=".
@@ -70,7 +71,7 @@ class ComparatorEnum extends Enum
      *
      * @var string
      */
-    const LTEQ = '<= %s';
+    public const LTEQ = '<= %s';
 
     /**
      * In comparator.
@@ -78,7 +79,7 @@ class ComparatorEnum extends Enum
      *
      * @var string
      */
-    const IN = 'IN (%s)';
+    public const IN = 'IN (%s)';
 
     /**
      * Not in comparator.
@@ -86,7 +87,7 @@ class ComparatorEnum extends Enum
      *
      * @var string
      */
-    const NIN = 'NOT IN (%s)';
+    public const NIN = 'NOT IN (%s)';
 
     /**
      * Like comparator.
@@ -94,7 +95,7 @@ class ComparatorEnum extends Enum
      *
      * @var string
      */
-    const LIKE = 'LIKE %s';
+    public const LIKE = 'LIKE %s';
 
     /**
      * Not like comparator.
@@ -102,7 +103,7 @@ class ComparatorEnum extends Enum
      *
      * @var string
      */
-    const NOT_LIKE = 'NOT LIKE %s';
+    public const NOT_LIKE = 'NOT LIKE %s';
 
     /**
      * Is null comparator.
@@ -110,7 +111,7 @@ class ComparatorEnum extends Enum
      *
      * @var string
      */
-    const IS_NULL = 'IS NULL';
+    public const IS_NULL = 'IS NULL';
 
     /**
      * Not null comparator.
@@ -118,5 +119,5 @@ class ComparatorEnum extends Enum
      *
      * @var string
      */
-    const NOT_NULL = 'NOT NULL';
+    public const NOT_NULL = 'NOT NULL';
 }

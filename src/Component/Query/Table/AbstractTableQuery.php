@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (C) GrizzIT, Inc. All rights reserved.
  * See LICENSE for license details.
@@ -7,9 +8,8 @@
 namespace Ulrack\Dbal\Sql\Component\Query\Table;
 
 use Ulrack\Dbal\Common\QueryInterface;
-use Ulrack\Dbal\Sql\Common\ColumnTypeEnum;
-use Ulrack\Dbal\Sql\Common\ColumnAttributeEnum;
-use Ulrack\Dbal\Sql\Common\ColumnDefaultEnum;
+use Ulrack\Dbal\Sql\Common\CascadeEnum;
+use Ulrack\Dbal\Sql\Common\ColumnDefinitionInterface;
 
 abstract class AbstractTableQuery implements QueryInterface
 {
@@ -65,7 +65,9 @@ abstract class AbstractTableQuery implements QueryInterface
         string $keyName,
         string $column,
         string $table,
-        string $tableColumn
+        string $tableColumn,
+        ?CascadeEnum $onDelete,
+        ?CascadeEnum $onUpdate
     ): void {
         $this->keys['add'][] = sprintf(
             'CONSTRAINT %s FOREIGN KEY(%s) REFERENCES %s(%s)',
@@ -73,7 +75,8 @@ abstract class AbstractTableQuery implements QueryInterface
             $column,
             $table,
             $tableColumn
-        );
+        ) . ($onDelete !== null ? ' ON DELETE' . $onDelete : '') .
+        ($onUpdate !== null ? ' ON UPDATE' . $onUpdate : '');
     }
 
     /**
@@ -104,40 +107,35 @@ abstract class AbstractTableQuery implements QueryInterface
     /**
      * Adds an add column operation to the operation list for the query.
      *
-     * @param string              $column
-     * @param ColumnTypeEnum      $type
-     * @param string              $typeOption
-     * @param ColumnDefaultEnum   $default
-     * @param ColumnAttributeEnum $attribute
-     * @param boolean             $null
-     * @param boolean             $autoIncrement
-     * @param string              $comment
+     * @param ColumnDefinitionInterface $column
      *
      * @return void
      */
     public function addColumn(
-        string $column,
-        ColumnTypeEnum $type,
-        string $typeOption = null,
-        ColumnDefaultEnum $default = null,
-        ColumnAttributeEnum $attribute = null,
-        bool $null = true,
-        bool $autoIncrement = false,
-        bool $unique = false,
-        string $comment = ''
+        ColumnDefinitionInterface $column
     ): void {
-        $default = $default !== null ? "'" . $default . "'" : '';
+        $default = $column->getDefault();
+        $defaultDefinition = '';
+        if ($default !== null) {
+            $defaultDefinition = (
+                is_string($default) ? "'" . $default . "'" :
+                (is_bool($default) ? (int) $default : $default)
+            );
+        }
 
+        $typeOption = $column->getTypeOption();
+        $attribute = $column->getAttribute();
+        $comment = $column->getComment();
         $this->columns['add'][] = sprintf(
             '`%s` %s%s%s%s%s%s%s%s',
-            $column,
-            $type,
+            $column->getName(),
+            $column->getType(),
             $typeOption === null ? '' : sprintf('(%s)', $typeOption),
             $attribute === null ? '' : sprintf(' %s ', $attribute),
-            $null ? ' NULL' : ' NOT NULL',
-            $default === '' ? '' : ' DEFAULT ' . $default,
-            $autoIncrement ? ' AUTO_INCREMENT' : '',
-            $unique ? ' UNIQUE' : '',
+            $column->isNullable() ? ' NULL' : ' NOT NULL',
+            $defaultDefinition === '' ? '' : ' DEFAULT ' . $defaultDefinition,
+            $column->isAutoIncrement() ? ' AUTO_INCREMENT' : '',
+            $column->isUnique() ? ' UNIQUE' : '',
             empty($comment) ? '' : sprintf(" COMMENT '%s'", $comment)
         );
     }
@@ -145,42 +143,37 @@ abstract class AbstractTableQuery implements QueryInterface
     /**
      * Adds an alter column operation to the operation list for the query.
      *
-     * @param string              $column
-     * @param ColumnTypeEnum      $type
-     * @param string              $typeOption
-     * @param ColumnDefaultEnum   $default
-     * @param ColumnAttributeEnum $attribute
-     * @param boolean             $null
-     * @param boolean             $autoIncrement
-     * @param string              $comment
-     * @param string              $newName
+     * @param ColumnDefinitionInterface $column
+     * @param string                    $newName
      *
      * @return void
      */
     public function alterColumn(
-        string $column,
-        ColumnTypeEnum $type,
-        string $typeOption = null,
-        ColumnDefaultEnum $default = null,
-        ColumnAttributeEnum $attribute = null,
-        bool $null = true,
-        bool $autoIncrement = false,
-        bool $unique = false,
-        string $comment = '',
+        ColumnDefinitionInterface $column,
         string $newName = ''
     ): void {
-        $default = $default !== null ? "'" . $default . "'" : '';
+        $default = $column->getDefault();
+        $defaultDefinition = '';
+        if ($default !== null) {
+            $defaultDefinition = (
+                is_string($default) ? "'" . $default . "'" :
+                (is_bool($default) ? (int) $default : $default)
+            );
+        }
 
+        $typeOption = $column->getTypeOption();
+        $attribute = $column->getAttribute();
+        $comment = $column->getComment();
         $this->columns['alter'][] = sprintf(
             (empty($newName) ? 'MODIFY ' : 'ALTER ') . '`%s` %s%s%s%s%s%s%s%s',
-            $column . (empty($newName) ? '' : '` `' . $newName),
-            $type,
+            $column->getName() . (empty($newName) ? '' : '` `' . $newName),
+            $column->getType(),
             $typeOption === null ? '' : sprintf('(%s)', $typeOption),
             $attribute === null ? '' : sprintf(' %s ', $attribute),
-            $null ? ' NULL' : ' NOT NULL',
-            $default === '' ? '' : ' DEFAULT ' . $default,
-            $autoIncrement ? ' AUTO_INCREMENT' : '',
-            $unique ? ' UNIQUE' : '',
+            $column->isNullable() ? ' NULL' : ' NOT NULL',
+            $defaultDefinition === '' ? '' : ' DEFAULT ' . $defaultDefinition,
+            $column->isAutoIncrement() ? ' AUTO_INCREMENT' : '',
+            $column->isUnique() ? ' UNIQUE' : '',
             empty($comment) ? '' : sprintf(" COMMENT '%s'", $comment)
         );
     }

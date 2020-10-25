@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (C) GrizzIT, Inc. All rights reserved.
  * See LICENSE for license details.
@@ -30,7 +31,7 @@ class CreateDatabaseQueryTest extends TestCase
         $this->assertInstanceOf(CreateDatabaseQuery::class, $subject);
 
         $this->assertEquals(
-            'CREATE DATABASE IF NOT EXISTS foo CHARACTER SET utf8mb4 COLLATE '.
+            'CREATE DATABASE IF NOT EXISTS foo CHARACTER SET utf8mb4 COLLATE ' .
             'utf8mb4_unicode_ci;',
             $subject->getQuery()
         );

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (C) GrizzIT, Inc. All rights reserved.
  * See LICENSE for license details.
@@ -7,11 +8,10 @@
 namespace Ulrack\Dbal\Sql\Tests\Component\Query\Table;
 
 use PHPUnit\Framework\TestCase;
-use Ulrack\Dbal\Sql\Component\Query\Table\AlterTableQuery;
-use Ulrack\Dbal\Sql\Common\IndexTypeEnum;
 use Ulrack\Dbal\Sql\Common\ColumnTypeEnum;
 use Ulrack\Dbal\Sql\Common\ColumnDefaultEnum;
-use Ulrack\Dbal\Sql\Common\ColumnAttributeEnum;
+use Ulrack\Dbal\Sql\Component\Query\Table\AlterTableQuery;
+use Ulrack\Dbal\Sql\Component\Query\Table\ColumnDefinition;
 
 /**
  * @coversDefaultClass \Ulrack\Dbal\Sql\Component\Query\Table\AlterTableQuery
@@ -41,28 +41,31 @@ class AlterTableQueryTest extends TestCase
 
         $subject->addPrimaryKey('bar');
         $subject->dropPrimaryKey();
-        $subject->addForeignKey('FK_foo', 'foo', 'qux', 'foo');
+        $subject->addForeignKey('FK_foo', 'foo', 'qux', 'foo', null, null);
         $subject->dropForeignKey('FK_bar');
-        $subject->addColumn(
+        $column = new ColumnDefinition(
             'qux',
-            ColumnTypeEnum::VARCHAR(),
-            '255',
-            ColumnDefaultEnum::DEFAULT_NULL(),
-            null,
-            true,
-            false,
-            false,
-            'Lorem Ipsum dolor sit amet'
+            ColumnTypeEnum::VARCHAR()
         );
+        $column->setTypeOption('255');
+        $column->setDefault(ColumnDefaultEnum::DEFAULT_NULL());
+        $column->setIsNullable(true);
+        $column->setComment('Lorem Ipsum dolor sit amet');
+        $subject->addColumn($column);
 
-        $subject->alterColumn('doe', ColumnTypeEnum::INT(), '11');
+        $alterColumn = new ColumnDefinition('doe', ColumnTypeEnum::INT());
+        $alterColumn->setTypeOption('11');
+        $alterColumn->setDefault(1);
+
+        $subject->alterColumn($alterColumn);
+
         $subject->dropColumn('foo');
 
         $this->assertEquals(
-            'ALTER TABLE foo ADD `qux` VARCHAR(255) NULL DEFAULT \'NULL\' '.
-            'COMMENT \'Lorem Ipsum dolor sit amet\', DROP COLUMN `foo`, MODIFY'.
-            ' `doe` INT(11) NULL, ADD CONSTRAINT PRIMARY KEY(`bar`), ADD '.
-            'CONSTRAINT FK_foo FOREIGN KEY(foo) REFERENCES qux(foo), DROP '.
+            'ALTER TABLE foo ADD `qux` VARCHAR(255) NULL DEFAULT NULL ' .
+            'COMMENT \'Lorem Ipsum dolor sit amet\', DROP COLUMN `foo`, MODIFY' .
+            ' `doe` INT(11) NOT NULL DEFAULT 1, ADD CONSTRAINT PRIMARY KEY(`bar`)' .
+            ', ADD CONSTRAINT FK_foo FOREIGN KEY(foo) REFERENCES qux(foo), DROP ' .
             'PRIMARY KEY, DROP FOREIGN KEY FK_bar;',
             $subject->getQuery()
         );

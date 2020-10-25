@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (C) GrizzIT, Inc. All rights reserved.
  * See LICENSE for license details.
@@ -16,8 +17,8 @@ use GrizzIt\Enum\Enum;
  */
 class IndexTypeEnum extends Enum
 {
-    const UNIQUE = 'UNIQUE INDEX';
-    const INDEX = 'INDEX';
-    const FULLTEXT = 'FULLTEXT INDEX';
-    const SPATIAL = 'SPATIAL INDEX';
+    public const UNIQUE = 'UNIQUE INDEX';
+    public const INDEX = 'INDEX';
+    public const FULLTEXT = 'FULLTEXT INDEX';
+    public const SPATIAL = 'SPATIAL INDEX';
 }

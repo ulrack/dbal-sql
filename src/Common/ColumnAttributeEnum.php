@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (C) GrizzIT, Inc. All rights reserved.
  * See LICENSE for license details.
@@ -16,8 +17,8 @@ use GrizzIt\Enum\Enum;
  */
 class ColumnAttributeEnum extends Enum
 {
-    const BINARY = 'BINARY';
-    const UNSIGNED = 'UNSIGNED';
-    const ZEROFILL = 'UNSIGNED ZEROFILL';
-    const ON_UPDATE_NOW = 'on update CURRENT_TIMESTAMP';
+    public const BINARY = 'BINARY';
+    public const UNSIGNED = 'UNSIGNED';
+    public const ZEROFILL = 'UNSIGNED ZEROFILL';
+    public const ON_UPDATE_NOW = 'on update CURRENT_TIMESTAMP';
 }

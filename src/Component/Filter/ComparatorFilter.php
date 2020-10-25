@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (C) GrizzIT, Inc. All rights reserved.
  * See LICENSE for license details.
@@ -75,8 +76,10 @@ class ComparatorFilter implements
      */
     public function getParameters(): array
     {
-        if ($this->comparator === ComparatorEnum::NOT_NULL
-        || $this->comparator === ComparatorEnum::IS_NULL) {
+        if (
+            $this->comparator === ComparatorEnum::NOT_NULL
+            || $this->comparator === ComparatorEnum::IS_NULL
+        ) {
             return [];
         }
 

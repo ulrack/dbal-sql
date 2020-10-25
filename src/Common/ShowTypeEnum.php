@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (C) GrizzIT, Inc. All rights reserved.
  * See LICENSE for license details.
@@ -19,12 +20,12 @@ class ShowTypeEnum extends Enum
      *
      * @var string
      */
-    const DATABASES = 'DATABASES';
+    public const DATABASES = 'DATABASES';
 
     /**
      * Contains the show tables keyword.
      *
      * @var string
      */
-    const TABLES = 'TABLES';
+    public const TABLES = 'TABLES';
 }

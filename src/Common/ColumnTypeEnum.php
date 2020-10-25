@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (C) GrizzIT, Inc. All rights reserved.
  * See LICENSE for license details.
@@ -53,58 +54,58 @@ class ColumnTypeEnum extends Enum
     /**
      * Numeric types
      */
-    const TINYINT = 'TINYINT';
-    const SMALLINT = 'SMALLINT';
-    const MEDIUMINT = 'MEDIUMINT';
-    const INT = 'INT';
-    const BIGINT = 'BIGINT';
-    const DECIMAL = 'DECIMAL';
-    const FLOAT = 'FLOAT';
-    const DOUBLE = 'DOUBLE';
-    const BIT = 'BIT';
-    const BOOLEAN = 'BOOLEAN';
+    public const TINYINT = 'TINYINT';
+    public const SMALLINT = 'SMALLINT';
+    public const MEDIUMINT = 'MEDIUMINT';
+    public const INT = 'INT';
+    public const BIGINT = 'BIGINT';
+    public const DECIMAL = 'DECIMAL';
+    public const FLOAT = 'FLOAT';
+    public const DOUBLE = 'DOUBLE';
+    public const BIT = 'BIT';
+    public const BOOLEAN = 'BOOLEAN';
 
     /**
      * Date types
      */
-    const DATE = 'DATE';
-    const DATETIME = 'DATETIME';
-    const TIMESTAMP = 'TIMESTAMP';
-    const TIME = 'TIME';
-    const YEAR = 'YEAR';
+    public const DATE = 'DATE';
+    public const DATETIME = 'DATETIME';
+    public const TIMESTAMP = 'TIMESTAMP';
+    public const TIME = 'TIME';
+    public const YEAR = 'YEAR';
 
     /**
      * Text types
      */
-    const CHAR = 'CHAR';
-    const VARCHAR = 'VARCHAR';
-    const TINYTEXT = 'TINYTEXT';
-    const TEXT = 'TEXT';
-    const MEDIUMTEXT = 'MEDIUMTEXT';
-    const LONGTEXT = 'LONGTEXT';
-    const BINARY = 'BINARY';
-    const VARBINARY = 'VARBINARY';
-    const TINYBLOB = 'TINYBLOB';
-    const MEDIUMBLOB = 'MEDIUMBLOB';
-    const BLOB = 'BLOB';
-    const LONGBLOB = 'LONGBLOB';
-    const ENUM = 'ENUM';
-    const SET = 'SET';
+    public const CHAR = 'CHAR';
+    public const VARCHAR = 'VARCHAR';
+    public const TINYTEXT = 'TINYTEXT';
+    public const TEXT = 'TEXT';
+    public const MEDIUMTEXT = 'MEDIUMTEXT';
+    public const LONGTEXT = 'LONGTEXT';
+    public const BINARY = 'BINARY';
+    public const VARBINARY = 'VARBINARY';
+    public const TINYBLOB = 'TINYBLOB';
+    public const MEDIUMBLOB = 'MEDIUMBLOB';
+    public const BLOB = 'BLOB';
+    public const LONGBLOB = 'LONGBLOB';
+    public const ENUM = 'ENUM';
+    public const SET = 'SET';
 
     /**
      * Spatial types
      */
-    const GEOMETRY = 'GEOMETRY';
-    const POINT = 'POINT';
-    const LINESTRING = 'LINESTRING';
-    const POLYGON = 'POLYGON';
-    const MULTIPOINT = 'MULTIPOINT';
-    const MULTILINESTRING = 'MULTILINESTRING';
-    const MULTIPOLYGON = 'MULTIPOLYGON';
-    const GEOMETRYCOLLECTION = 'GEOMETRYCOLLECTION';
+    public const GEOMETRY = 'GEOMETRY';
+    public const POINT = 'POINT';
+    public const LINESTRING = 'LINESTRING';
+    public const POLYGON = 'POLYGON';
+    public const MULTIPOINT = 'MULTIPOINT';
+    public const MULTILINESTRING = 'MULTILINESTRING';
+    public const MULTIPOLYGON = 'MULTIPOLYGON';
+    public const GEOMETRYCOLLECTION = 'GEOMETRYCOLLECTION';
 
     /**
      * JSON types
      */
-    const JSON = 'JSON';
+    public const JSON = 'JSON';
 }

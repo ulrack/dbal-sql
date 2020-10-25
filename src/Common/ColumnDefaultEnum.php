@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (C) GrizzIT, Inc. All rights reserved.
  * See LICENSE for license details.
@@ -15,7 +16,7 @@ use GrizzIt\Enum\Enum;
  */
 class ColumnDefaultEnum extends Enum
 {
-    const NONE = '';
-    const DEFAULT_NULL = 'NULL';
-    const CURRENT_TIMESTAMP = 'CURRENT_TIMESTAMP';
+    public const NONE = '';
+    public const DEFAULT_NULL = 'NULL';
+    public const CURRENT_TIMESTAMP = 'CURRENT_TIMESTAMP';
 }

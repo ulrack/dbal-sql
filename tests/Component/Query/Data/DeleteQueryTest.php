@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (C) GrizzIT, Inc. All rights reserved.
  * See LICENSE for license details.
@@ -33,7 +34,7 @@ class DeleteQueryTest extends TestCase
     public function testQuery(): void
     {
         $subject = new DeleteQuery('foo');
-        $filterGroup = new QueryFilterGroup;
+        $filterGroup = new QueryFilterGroup();
         $filterGroup->addFilter(
             new ComparatorFilter('bar', 'baz', ComparatorEnum::EQ())
         );

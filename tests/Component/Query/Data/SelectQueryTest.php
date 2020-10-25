@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (C) GrizzIT, Inc. All rights reserved.
  * See LICENSE for license details.
@@ -39,7 +40,7 @@ class SelectQueryTest extends TestCase
         $subject->setDistinct(true);
         $subject->addGroupBy('bar');
 
-        $filterGroup = new QueryFilterGroup;
+        $filterGroup = new QueryFilterGroup();
         $filterGroup->addFilter(
             new ComparatorFilter('bar', 'baz', ComparatorEnum::EQ())
         );
@@ -53,7 +54,7 @@ class SelectQueryTest extends TestCase
         $subject->addSorter('foo', SortDirectionEnum::DIRECTION_ASC());
 
         $this->assertEquals(
-            'SELECT DISTINCT baz, foo AS bar, COUNT(foo) AS count FROM foo WHERE'.
+            'SELECT DISTINCT baz, foo AS bar, COUNT(foo) AS count FROM foo WHERE' .
             ' (bar = ?) GROUP BY bar ORDER BY foo ASC;',
             $subject->getQuery()
         );

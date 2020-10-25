@@ -132,6 +132,9 @@ for the other table queries.
 - [CreateTableQuery](src/Component/Query/Table/CreateTableQuery.php)
 - [DropTableQuery](src/Component/Query/Table/DropTableQuery.php)
 
+Column operations are defined through:
+- [ColumnDefinition](src/Component/Query/Table/ColumnDefinition.php)
+
 ##### View
 
 - [CreateOrReplaceViewQuery](src/Component/Query/View/CreateOrReplaceViewQuery.php)

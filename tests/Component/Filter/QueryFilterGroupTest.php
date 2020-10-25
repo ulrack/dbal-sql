@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (C) GrizzIT, Inc. All rights reserved.
  * See LICENSE for license details.
@@ -25,7 +26,7 @@ class QueryFilterGroupTest extends TestCase
      */
     public function testFilter(): void
     {
-        $subject = new QueryFilterGroup;
+        $subject = new QueryFilterGroup();
         $subject->addFilter(
             new ComparatorFilter('foo', 'bar', ComparatorEnum::EQ())
         );
@@ -42,7 +43,7 @@ class QueryFilterGroupTest extends TestCase
      */
     public function testNoFiltersInGroup(): void
     {
-        $subject = new QueryFilterGroup;
+        $subject = new QueryFilterGroup();
         $this->assertEquals('', $subject->getFilterGroup());
         $this->assertEquals([], $subject->getParameters());
     }
