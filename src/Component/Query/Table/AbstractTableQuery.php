@@ -75,8 +75,8 @@ abstract class AbstractTableQuery implements QueryInterface
             $column,
             $table,
             $tableColumn
-        ) . ($onDelete !== null ? ' ON DELETE' . $onDelete : '') .
-        ($onUpdate !== null ? ' ON UPDATE' . $onUpdate : '');
+        ) . ($onDelete !== null ? ' ON DELETE ' . $onDelete : '') .
+        ($onUpdate !== null ? ' ON UPDATE ' . $onUpdate : '');
     }
 
     /**
