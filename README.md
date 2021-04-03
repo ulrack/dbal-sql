@@ -1,3 +1,5 @@
+# DEPRECATION NOTICE: this package has been moved and improved at [grizz-it/dbal-sql](https://github.com/grizz-it/dbal-sql)
+
 [![Build Status](https://travis-ci.com/ulrack/dbal-sql.svg?branch=master)](https://travis-ci.com/ulrack/dbal-sql)
 
 # Ulrack DBAL SQL
